@@ -12,7 +12,7 @@ Organization:
     Type: OC::ORG::MasterAccount
     Properties:
       AccountName: Gajin Demo Account Name
-      AccountId: 'ACCOUNT_ID_HERE'
+      AccountId: '678563106223'
       RootEmail: gajin2000+1@gmail.com
       ServiceControlPolicies:
         - !Ref DenyChangeOfOrgRoleSCP
