@@ -7,7 +7,7 @@ Parameters:
     Default: "gajinkim-fake-organization"
   RepositoryName:
     Type: String
-    Default: "Organization"
+    Default: "demo-repository"
   OIDCProviderArn:
     Description: Arn for the GitHub OIDC Provider.
     Default: ""
