@@ -25,13 +25,13 @@ Organization:
     Properties:
       AccountName: Development Account
       AccountId: ''
-      RootEmail: gajin2000+1@gmail.com
+      RootEmail: gajin2000+2@gmail.com
       ServiceControlPolicies:
         - !Ref DenyChangeOfOrgRoleSCP
         - !Ref RestrictUnusedRegionsSCP
       Tags:
         budget-alarm-threshold: '5'
-        account-owner-email: gajin2000+1@gmail.com
+        account-owner-email: gajin2000+2@gmail.com
 
   # Organization Units
   AdminOU:
