@@ -1,0 +1,37 @@
+name: Auto deploy
+
+on:
+  push:
+    branches: 
+      - master
+    tags:
+      - deploy
+
+jobs:
+  DeploytoAWS:
+    name: Deploy the following to AWS.
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: us-east-2
+          role-to-assume: arn:aws:iam::007633048842:role/github-identity-provider-admin-role
+
+      - name: Include node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: install org-formation
+        run: npm install -g aws-organization-formation
+
+      - name: Update stack from template
+        run: org-formation update organization.yml
