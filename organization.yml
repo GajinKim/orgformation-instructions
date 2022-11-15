@@ -1,0 +1,95 @@
+AWSTemplateFormatVersion: '2010-09-09-OC'
+Description: default template generated for organization with master account MASTER_ACCOUNT_ID_HERE
+
+Organization:
+
+  # Accounts -- Removing accounts will not delete them!
+  OrganizationRoot:
+    Type: OC::ORG::OrganizationRoot
+    Properties:
+      DefaultOrganizationAccessRoleName: OrganizationAccountAccessRole
+  ManagementAccount:
+    Type: OC::ORG::MasterAccount
+    Properties:
+      AccountName: Gajin Demo Account Name
+      AccountId: 'ACCOUNT_ID_HERE'
+      RootEmail: gajin2000@gmail.com
+      ServiceControlPolicies:
+        - !Ref DenyChangeOfOrgRoleSCP
+        - !Ref RestrictUnusedRegionsSCP
+      Tags:
+        budget-alarm-threshold: '10'
+        account-owner-email: gajin2000@gmail.com
+  DevelopmentAccount:
+    Type: OC::ORG::Account
+    Properties:
+      AccountName: Development Account
+      AccountId: ''
+      RootEmail: gajin2000@gmail.com
+      ServiceControlPolicies:
+        - !Ref DenyChangeOfOrgRoleSCP
+        - !Ref RestrictUnusedRegionsSCP
+      Tags:
+        budget-alarm-threshold: '5'
+        account-owner-email: gajin2000@gmail.com
+
+  # Organization Units
+  AdminOU:
+    Type: OC::ORG::OrganizationalUnit
+    Properties:
+      OrganizationalUnitName: Admin
+      Accounts:
+        - !Ref ManagementAccount
+  DevelopmentOU:
+    Type: OC::ORG::OrganizationalUnit
+    Properties:
+      OrganizationalUnitName: Development
+      Accounts:
+        - !Ref DevelopmentAccount
+
+  # Users
+  # admin-cli-access might be worth adding here...
+
+  # Service Control Policies
+  DenyChangeOfOrgRoleSCP:
+    Type: OC::ORG::ServiceControlPolicy
+    Properties:
+      PolicyName: DenyChangeOfOrgRole
+      Description: Deny changing the IAM role used for organization access
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: DenyChangeOfOrgRole
+            Effect: Deny
+            Action:
+              - 'iam:Attach*'
+              - 'iam:Create*'
+              - 'iam:Delete*'
+              - 'iam:Detach*'
+              - 'iam:PutRole*'
+              - 'iam:Update*'
+            Resource:
+              - 'arn:aws:iam::*:role/OrganizationAccountAccessRole'
+  RestrictUnusedRegionsSCP:
+    Type: OC::ORG::ServiceControlPolicy
+    Properties:
+      PolicyName: RestrictUnusedRegions
+      Description: Restrict Unused regions
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: DenyUnsupportedRegions
+            Effect: Deny
+            NotAction:
+              - 'cloudfront:*'
+              - 'iam:*'
+              - 'route53:*'
+              - 'support:*'
+              - 'budgets:*'
+            Resource: '*'
+            Condition:
+              StringNotEquals:
+                'aws:RequestedRegion':
+                  - us-east-1
+                  - eu-west-1
+                  - eu-central-1
