@@ -1,11 +1,6 @@
 name: Auto deploy
 
-on:
-  push:
-    branches: 
-      - master
-    tags:
-      - deploy
+on: [ 'push' ]
 
 jobs:
   DeploytoAWS:
