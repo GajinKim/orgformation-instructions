@@ -11,7 +11,8 @@ Organization:
   ManagementAccount:
     Type: OC::ORG::MasterAccount
     Properties:
-      AccountName: Gajin Demo Account Name
+      # this is the Management Account name (account itself)
+      AccountName: gajin
       AccountId: '678563106223'
       RootEmail: gajin2000+1@gmail.com
       ServiceControlPolicies:
