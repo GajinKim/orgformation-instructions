@@ -13,26 +13,26 @@ Organization:
     Properties:
       # this is the Management Account name (account itself)
       AccountName: gajin
-      AccountId: '678563106223'
-      RootEmail: gajin2000+1@gmail.com
+      AccountId: '791142549463' # update
+      RootEmail: gajin2000+10@gmail.com # update
       ServiceControlPolicies:
         - !Ref DenyChangeOfOrgRoleSCP
         - !Ref RestrictUnusedRegionsSCP
       Tags:
         budget-alarm-threshold: '10'
-        account-owner-email: gajin2000+1@gmail.com
+        account-owner-email: gajin2000+10@gmail.com # update
   DevelopmentAccount:
     Type: OC::ORG::Account
     Properties:
       AccountName: Development Account
       AccountId: ''
-      RootEmail: gajin2000+2@gmail.com
+      RootEmail: gajin2000+11@gmail.com # update
       ServiceControlPolicies:
         - !Ref DenyChangeOfOrgRoleSCP
         - !Ref RestrictUnusedRegionsSCP
       Tags:
         budget-alarm-threshold: '5'
-        account-owner-email: gajin2000+2@gmail.com
+        account-owner-email: gajin2000+11@gmail.com # update
 
   # Organization Units
   AdminOU:
