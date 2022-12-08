@@ -18,21 +18,15 @@ Organization:
       ServiceControlPolicies:
         - !Ref DenyChangeOfOrgRoleSCP
         - !Ref RestrictUnusedRegionsSCP
-      Tags:
-        budget-alarm-threshold: '10'
-        account-owner-email: gajin2000+10@gmail.com # update
   DevelopmentAccount:
     Type: OC::ORG::Account
     Properties:
       AccountName: Development Account
       AccountId: ''
-      RootEmail: gajin2000+11@gmail.com # update
+      RootEmail: gajin2000+1@gmail.com # update
       ServiceControlPolicies:
         - !Ref DenyChangeOfOrgRoleSCP
         - !Ref RestrictUnusedRegionsSCP
-      Tags:
-        budget-alarm-threshold: '5'
-        account-owner-email: gajin2000+11@gmail.com # update
 
   # Organization Units
   AdminOU:
