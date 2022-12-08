@@ -18,7 +18,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::791142549463:role/github-identity-provider-admin-role # update
+          role-to-assume: arn:aws:iam::352141123956:role/github-identity-provider-admin-role # update - grab from iam roles
 
       - name: Include node
         uses: actions/setup-node@v3
