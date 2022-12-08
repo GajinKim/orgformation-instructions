@@ -23,7 +23,7 @@ Organization:
     Properties:
       AccountName: Development Account
       AccountId: ''
-      RootEmail: gajin2000+10@gmail.com # update
+      RootEmail: gajin2000+9001@gmail.com # update
       ServiceControlPolicies:
         - !Ref DenyChangeOfOrgRoleSCP
         - !Ref RestrictUnusedRegionsSCP
