@@ -13,8 +13,8 @@ Organization:
     Properties:
       # this is the Management Account name (account itself)
       AccountName: gajin
-      AccountId: '791142549463' # update
-      RootEmail: gajin2000+10@gmail.com # update
+      AccountId: '352141123956' # update
+      RootEmail: gajin2000+15@gmail.com # update
       ServiceControlPolicies:
         - !Ref DenyChangeOfOrgRoleSCP
         - !Ref RestrictUnusedRegionsSCP
@@ -23,7 +23,7 @@ Organization:
     Properties:
       AccountName: Development Account
       AccountId: ''
-      RootEmail: gajin2000+1@gmail.com # update
+      RootEmail: gajin2000+10@gmail.com # update
       ServiceControlPolicies:
         - !Ref DenyChangeOfOrgRoleSCP
         - !Ref RestrictUnusedRegionsSCP
